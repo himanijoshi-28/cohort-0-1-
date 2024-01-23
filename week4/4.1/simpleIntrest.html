@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let timeout;
+      function debouncefun() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+          fun();
+        }, 100);
+      }
+      async function fun() {
+        const p = document.getElementById("p").value;
+        const r = document.getElementById("r").value;
+        const t = document.getElementById("t").value;
+        const para = document.getElementById("ans");
+
+        const response = await fetch(
+          `https://sum-server.100xdevs.com/interest?principal=${p}&rate=${r}&time=${t}`
+        );
+        console.log(response);
+        const ans = await response.json();
+        console.log(ans);
+        para.innerHTML = `SI:${ans.total}`;
+      }
+    </script>
+  </head>
+  <body>
+    <input id="p" type="number" placeholder="Enter Principal" />
+    <input id="r" type="number" placeholder="Enter rate" />
+    <input id="t" type="number" placeholder="Enter time" />
+    <input id="btn" type="submit" onclick="debouncefun()" />
+
+    <p id="ans"></p>
+  </body>
+</html>
