@@ -1,42 +1,20 @@
-// // eslint-disable-next-line no-unused-vars
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import "./App.css";
-// const App = () => {
-//   const [todos, setTodos] = useState([]);
-//   useEffect(() => {
-//     axios
-//       .get("https://sum-server.100xdevs.com/todos")
-//       .then(async function (response) {
-//         setTodos(response.data.todos);
-//         console.log(response.data.todos);
-//         console.log(todos);
-//       });
-//   }, []);
-//   return (
-//     <div>
-//       {todos.map((todo) => (
-//         <Todo title={todo.title} description={todo.description} />
-//       ))}
-//     </div>
-//   );
-// };
-// const Todo = ({ title, description }) => {
-//   return (
-//     <>
-//       <h2>{title}</h2>
-//       <h3>{description}</h3>
-//     </>
-//   );
-// };
-// export default App;
 import React, { useEffect, useState } from "react";
-import "./App.css";
+// import "./App.css";
 import axios from "axios";
+// const handleClick = () => {
+//   return <Todo id={1} />;
+// };
 const App = () => {
+  const [ids, setId] = useState(1);
+
   return (
     <div>
-      <Todo id={1}></Todo>
+      <button onClick={() => setId(1)}>Button1 </button>
+      <button onClick={() => setId(2)}>Button2 </button>
+      <button onClick={() => setId(3)}>Button3 </button>
+      <button onClick={() => setId(4)}>Button4 </button>
+      {/* {console.log(ids)} */}
+      <Todo id={ids} />
     </div>
   );
 };
