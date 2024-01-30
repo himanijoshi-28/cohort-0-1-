@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
-import { countAtom } from "./context/atoms/countAtom";
+import { countAtom, isevenSelector } from "./context/atoms/countAtom";
 const App = () => {
   return (
     <div>
@@ -17,6 +17,7 @@ function Count() {
     <div>
       <CountRenderer />
       <Buttons />
+      <IsEven />
     </div>
   );
 }
@@ -45,5 +46,8 @@ function Buttons() {
     </div>
   );
 }
-
+function IsEven() {
+  const isEven = useRecoilValue(isevenSelector);
+  return <div>{!isEven && <div>Count IS EVEN</div>}</div>;
+}
 export default App;
