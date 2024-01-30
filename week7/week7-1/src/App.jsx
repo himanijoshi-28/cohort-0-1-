@@ -1,27 +1,31 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
-import { countContext } from "./context.js";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+import { countAtom } from "./context/atoms/countAtom";
 const App = () => {
-  const [count, setCount] = useState(0);
   return (
     <div>
-      <countContext.Provider value={count}>
-        <Count setCount={setCount} />
-      </countContext.Provider>
+      <RecoilRoot>
+        <Count />
+      </RecoilRoot>
     </div>
   );
 };
-function Count({ setCount }) {
-  const count = useContext(countContext);
+
+function Count() {
+  console.log("rerender");
   return (
     <div>
-      {count}
-      <Buttons count={count} setCount={setCount} />;
+      <CountRenderer />
+      <Buttons />
     </div>
   );
 }
-function Buttons({ setCount }) {
-  let count = useContext(countContext);
+function CountRenderer() {
+  const count = useRecoilValue(countAtom);
+  return <div>{count}</div>;
+}
+function Buttons() {
+  let [count, setCount] = useRecoilState(countAtom);
   return (
     <div>
       <button
