@@ -1,1 +1,3 @@
-postgresql://joshihimani2507:G48pSPEjBrhn@ep-fancy-cell-61357429.us-east-2.aws.neon.tech/test?sslmode=require
+view all styles 
+find fonts 
+post job -> gradient button margin handling
